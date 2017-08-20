@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css?v=2324234" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -17,7 +17,7 @@
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
         <!-- MY PHONE NUMBER -->
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-        <div class="col-sm-6">
+        <div class="col-sm-6" style="display: none">
             <div id="my-number-section" class="text-center">
                 <div id="my-number">LOADING</div>
                 <div id="my-number-title" class="hidden-sm hidden-xs">
@@ -38,29 +38,13 @@
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
         <!-- Video -->
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-        <div class="col-sm-6">
-            <!-- DISPLAY -->
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <div id="video-border">
-                        <div class="pubnub-relative">
-                            <div id="video-self"></div>
-                        </div>
+      
                         <div id="video-display">
                             <span class="glyphicon glyphicon-flash"></span>
                         </div>
-                    </div>
-                    <div id="pubnub-relative">
-                        <div id="video-thumbnail"></div>
-                        <div id="pubnub-logo">
-                            <div id="pubnub-logo-img"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+                  
             <!-- DIAL CONTROLS -->
-            <div class="row">
+            <div class="row" style="display: none">
                 <div class="col-sm-6 col-xs-7">
                     <div class="form-group"><div class="input-group">
                     <div class="input-group-addon">
@@ -150,7 +134,6 @@ function urlstring(params) {
 // Calling & Answering Service
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 var video_out = PUBNUB.$('video-display');
-var img_out   = PUBNUB.$('video-thumbnail');
 var img_self  = PUBNUB.$('video-self');
 
 var phone     = window.phone = PHONE({
@@ -179,7 +162,6 @@ function ended(session) {
     clearInterval(thumbnail.ival);
     thumbnail.ival = 0;
     set_icon('facetime-video');
-    img_out.innerHTML = '';
     sounds.play('sound/goodbye');
     console.log("Bye!");
 }
@@ -253,9 +235,7 @@ phone.ready(function(){
 // Received Call Thumbnail
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 function thumbnail(session) {
-    img_out.innerHTML = '';
-    img_out.appendChild(session.image);
-    img_out.appendChild(phone.snap().image);
+    
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
