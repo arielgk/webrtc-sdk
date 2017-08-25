@@ -161,8 +161,8 @@ var img_self  = PUBNUB.$('video-self');
 
 var phone     = window.phone = PHONE({
     number        : my_number.number, // listen on this line
-    publish_key   : 'pub-c-561a7378-fa06-4c50-a331-5c0056d0163c',
-    subscribe_key : 'sub-c-17b7db8a-3915-11e4-9868-02ee2ddab7fe',
+    publish_key   : 'pub-c-7c9e4a16-2fda-4549-911b-7775d11501af',
+    subscribe_key : 'sub-c-375cb6b4-f857-11e6-80ea-0619f8945a4f',
     ssl           : true
 });
 
@@ -205,10 +205,10 @@ function dial(number) {
     $.ajax({      
         type: 'PUT',
         //Replace "yourChannel" with your actual Xirsys channel ID
-        url: 'https://ws.xirsys.com/_turn/yourChannel/',      
+        url: 'https://ws.xirsys.com/_turn/bienalscreens/',
         headers: {
             //Replace "ident" and "secret" with your actual Xirsys ident and secret key
-        'Authorization': 'Basic ' + btoa('ident:secret')
+        'Authorization': 'Basic ' + btoa('arielgk:dfd306dc-8910-11e7-bccc-7e209c8a16d7')
      },        
         success: function(res) {
             // Dial Number
