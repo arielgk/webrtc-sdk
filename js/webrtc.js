@@ -304,7 +304,7 @@ var PHONE = window.PHONE = function(config) {
         // Video Settings
         video.width  = snap.width;
         video.height = snap.height;
-        video.src    = URL.createObjectURL(stream);
+        video.src    = (window.URL ? URL : webkitURL).createObjectURL(evt.data).createObjectURL(stream);
         video.volume = 0.0;
         video.play();
 
