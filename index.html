@@ -164,6 +164,8 @@ function connected(session) {
     PUBNUB.$('number').value = ''+session.number;
     sounds.play('sound/hi');
     console.log("Hi!");
+
+    console.log(video_out)
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -272,6 +274,7 @@ phone.receive(function(session){
     session.thumbnail(thumbnail);
     session.connected(connected);
     session.ended(ended);
+    console.log(session);
 
     if (!thumbnail.ival){
         thumbnail.ival = setInterval( function(){

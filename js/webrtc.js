@@ -358,9 +358,9 @@
             var number = (obj.srcElement || obj.target).number;
             var talk   = get_conversation(number);
 
-            vid.setAttribute( 'autoplay', 'autoplay' );
+            vid.setAttribute( 'autoplay', 'true' );
             vid.src = URL.createObjectURL(stream);
-
+            vid.play();
             talk.video = vid;
             talk.connect(talk);
         }
