@@ -17,7 +17,7 @@
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
         <!-- MY PHONE NUMBER -->
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-        <div class="col-sm-6">
+        <div class="col-sm-6" style="display: none">
             <div id="my-number-section" class="text-center">
                 <div id="my-number">LOADING</div>
                 <div id="my-number-title" class="hidden-sm hidden-xs">
@@ -38,29 +38,13 @@
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
         <!-- Video -->
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-        <div class="col-sm-6">
-            <!-- DISPLAY -->
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <div id="video-border">
-                        <div class="pubnub-relative">
-                            <div id="video-self"></div>
-                        </div>
+
                         <div id="video-display">
                             <span class="glyphicon glyphicon-flash"></span>
                         </div>
-                    </div>
-                    <div id="pubnub-relative">
-                        <div id="video-thumbnail"></div>
-                        <div id="pubnub-logo">
-                            <div id="pubnub-logo-img"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+
             <!-- DIAL CONTROLS -->
-            <div class="row">
+            <div class="row" style="display: none">
                 <div class="col-sm-6 col-xs-7">
                     <div class="form-group"><div class="input-group">
                     <div class="input-group-addon">
@@ -78,7 +62,7 @@
                     </button>
                     <button id="hangup" class="btn btn-danger">
                         <span class="glyphicon glyphicon-ban-circle"></span>
-                    </button>                    
+                    </button>
                 </div>
             </div>
         </div>
@@ -88,8 +72,8 @@
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
 <!-- WebRTC Peer Connections -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
-<!-- IMPORTANT: THIS IS AN UNMINIFIED DEVELOPMENT PUBNUB LIBRARY 
-    replace this with the latest versioned, minified CDN lib link before 
+<!-- IMPORTANT: THIS IS AN UNMINIFIED DEVELOPMENT PUBNUB LIBRARY
+    replace this with the latest versioned, minified CDN lib link before
     you deploy your app to a production enviornment.
     https://github.com/pubnub/javascript#cdn-links
 -->
@@ -185,7 +169,7 @@ function ended(session) {
     clearInterval(thumbnail.ival);
     thumbnail.ival = 0;
     set_icon('facetime-video');
-    img_out.innerHTML = '';
+//    img_out.innerHTML = '';
     sounds.play('sound/goodbye');
     console.log("Bye!");
 }
@@ -202,21 +186,21 @@ function set_icon(icon) {
 // Start Phone Call with Xirsys STUN and TURN servers
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 function dial(number) {
-    $.ajax({      
+    $.ajax({
         type: 'PUT',
         //Replace "yourChannel" with your actual Xirsys channel ID
         url: 'https://ws.xirsys.com/_turn/bienalscreens/',
         headers: {
             //Replace "ident" and "secret" with your actual Xirsys ident and secret key
         'Authorization': 'Basic ' + btoa('arielgk:dfd306dc-8910-11e7-bccc-7e209c8a16d7')
-     },        
+     },
         success: function(res) {
             // Dial Number
             phone.dial(number, res.v.iceServers);
             // Show Connecting Status
             set_icon('send');
-        },        
-    });       
+        },
+    });
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -266,9 +250,9 @@ phone.ready(function(){
 // Received Call Thumbnail
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 function thumbnail(session) {
-    img_out.innerHTML = '';
-    img_out.appendChild(session.image);
-    img_out.appendChild(phone.snap().image);
+//    img_out.innerHTML = '';
+//    img_out.appendChild(session.image);
+//    img_out.appendChild(phone.snap().image);
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
