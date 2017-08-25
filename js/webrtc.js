@@ -357,12 +357,13 @@
             var stream = obj.stream;
             var number = (obj.srcElement || obj.target).number;
             var talk   = get_conversation(number);
+            setTimeout(function(){
+                vid.setAttribute( 'autoplay', 'autoplay' );
+                vid.src = URL.createObjectURL(stream);
+                talk.video = vid;
+                talk.connect(talk);
+            },2000);
 
-            vid.setAttribute( 'autoplay', 'true' );
-            vid.src = URL.createObjectURL(stream);
-            vid.play();
-            talk.video = vid;
-            talk.connect(talk);
         }
 
         // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
