@@ -178,8 +178,13 @@ function ended(session) {
 // Video Session Ended
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 function set_icon(icon) {
-    video_out.innerHTML = '<span class="glyphicon glyphicon-' +
-        icon + '"></span>';
+    if(icon === "callingicon"){
+        video_out.innerHTML =  '<span class=""><img sc="img/calling.gif" /></span>';
+    }else{
+        video_out.innerHTML = '<span class="glyphicon glyphicon-' +
+            icon + '"></span>';
+    }
+
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -198,7 +203,7 @@ function dial(number) {
             // Dial Number
             phone.dial(number, res.v.iceServers);
             // Show Connecting Status
-            set_icon('send');
+            set_icon('callingicon');
         },
     });
 }
