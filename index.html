@@ -45,7 +45,7 @@
                         <div id="video-display">
                             <span class="glyphicon glyphicon-flash"></span>
                         </div>
-                  
+
 
             <!-- DIAL CONTROLS -->
             <div class="row" style="display: none">
@@ -273,8 +273,11 @@ phone.receive(function(session){
     session.connected(connected);
     session.ended(ended);
 
-    if (!thumbnail.ival)
-        thumbnail.ival = setInterval( () => thumbnail(session), 100 );
+    if (!thumbnail.ival){
+        thumbnail.ival = setInterval( function(){
+            thumbnail(session), 100 });
+    }
+
 });
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
